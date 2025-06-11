@@ -3,7 +3,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import './App.css'
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://todo-new-8z7t.onrender.com';
 
 function App() {
   const [user, setUser] = useState(null);

@@ -1,4 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState}from "react";
+import axios from 'axios';
+import './App.css';
+
+function App() {
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() =>{
+    axios.get('http://localhost:5000/movies')
+    .then(res=>setMovies(res.data))
+    .catch(err=>console.error(err));
+
+  },[]);
+
+
+  return(
+
+    <div className="App">
+      <h1 style={{color :"black"}}>Top 10 movies</h1>
+
+      <div className = "grid">
+        {
+          movies.map((movie,index) => (
+            <div key={index} className='card'>
+              <img src={movie.paster} alt = {movie.title}/>
+              <h2>{movie.title}</h2>
+              <p>{movie.rating}</p>
+              <p>{movie.overview}</p>
+
+</div>
+          ))}
+      </div>
+    </div>
+
+  );
+
+}
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** 
+ * 
+ * import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import './App.css'
@@ -163,3 +225,5 @@ useEffect(() => {
 }
 
 export default App;
+
+ */
